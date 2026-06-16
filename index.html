@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PharmaVigour OS - Master Core</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: Arial, sans-serif; }
+        
+        /* Login System Layer Style */
+        #loginScreen { background-color: #0f172a; display: flex; justify-content: center; align-items: center; height: 100vh; padding: 15px; }
+        .login-card { background: #ffffff; padding: 30px; border-radius: 8px; width: 100%; max-width: 400px; box-shadow: 0 10px 25px rgba(0,0,0,0.3); }
+        .brand-title { text-align: center; color: #1e3a8a; font-size: 24px; font-weight: bold; margin-bottom: 5px; }
+        .brand-sub { text-align: center; color: #64748b; font-size: 12px; text-transform: uppercase; margin-bottom: 25px; letter-spacing: 1px; }
+        .form-group { display: flex; flex-direction: column; margin-bottom: 15px; }
+        .form-group label { font-size: 12px; color: #475569; font-weight: bold; margin-bottom: 5px; }
+        .form-group input { padding: 10px; border: 1px solid #cbd5e1; border-radius: 4px; font-size: 14px; outline: none; }
+        .error-msg { color: #ef4444; font-size: 12px; margin-bottom: 15px; display: none; text-align: center; font-weight: bold; }
+        .btn-login { background: #2563eb; color: white; border: none; padding: 12px; border-radius: 4px; width: 100%; font-size: 14px; font-weight: bold; cursor: pointer; }
+
+        /* Billing System Layer Style */
+        #billingScreen { background-color: #f4f6f9; color: #333; padding: 15px; display: none; }
+        .container { max-width: 1200px; margin: 0 auto; background: #ffffff; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); padding: 20px; }
+        .header { border-bottom: 2px solid #eef2f5; padding-bottom: 15px; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center; }
+        .header h1 { font-size: 20px; color: #1e293b; }
+        .store-tag { background-color: #e0f2fe; color: #0369a1; padding: 4px 10px; border-radius: 4px; font-size: 12px; font-weight: bold; }
+        .meta-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 15px; margin-bottom: 20px; background: #f8fafc; padding: 15px; border-radius: 6px; border: 1px solid #e2e8f0; }
+        .search-section { margin-bottom: 20px; position: relative; }
+        .search-box { width: 100%; padding: 12px; border: 2px solid #3b82f6; border-radius: 6px; font-size: 14px; outline: none; }
+        .suggestions-box { position: absolute; top: 100%; left: 0; right: 0; background: white; border: 1px solid #cbd5e1; border-radius: 0 0 6px 6px; max-height: 200px; overflow-y: auto; z-index: 1000; display: none; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        .suggestion-item { padding: 10px 15px; cursor: pointer; border-bottom: 1px solid #f1f5f9; font-size: 13px; }
+        .suggestion-item:hover { background-color: #f0fdf4; }
+        table { width: 100%; border-collapse: collapse; font-size: 13px; min-width: 800px; }
+        th { background-color: #0f172a; color: white; padding: 12px 10px; }
+        td { padding: 10px; border-bottom: 1px solid #e2e8f0; }
+        .qty-input, .disc-input { width: 60px; padding: 5px; border: 1px solid #cbd5e1; border-radius: 4px; text-align: center; }
+        .empty-row td { text-align: center; color: #94a3b8; padding: 40px 0; font-style: italic; }
+        .delete-btn { background: #ef4444; color: white; border: none; padding: 4px 8px; border-radius: 4px; cursor: pointer; font-size: 11px; }
+        .summary-box { display: flex; justify-content: flex-end; margin-top: 20px; border-top: 2px solid #eef2f5; padding-top: 15px; }
+        .summary-table { width: 320px; border-collapse: collapse; }
+        .summary-table tr td { padding: 8px 10px; border: none; font-size: 14px; }
+        .summary-table tr td.amt-col { text-align: right; font-weight: bold; width: 120px; }
+        .total-row { font-size: 18px; color: #1e3a8a; background-color: #f1f5f9; }
+        .btn-container { margin-top: 25px; display: flex; gap: 15px; justify-content: flex-end; }
+        .btn { padding: 10px 20px; border: none; border-radius: 4px; font-weight: bold; cursor: pointer; }
+        .btn-primary { background: #2563eb; color: white; }
+        .btn-secondary { background: #64748b; color: white; }
+
+        /* Print Fixed Setup */
+        @media print {
+            #loginScreen { display: none !important; }
+            #billingScreen { display: block !important; background: white; color: black; padding: 0; margin: 0; }
+            .container { box-shadow: none; padding: 0; max-width: 100%; }
+            .search-section, .btn-container, .delete-btn, th:last-child, td:last-child { display: none !important; }
+            .header h1::after { content: " (INVOICE / CASH MEMO)"; font-size: 13px; display: block; color: #000; font-weight: bold; margin-top: 5px; }
+            table { min-width: 100%; }
+            th { background-color: #e2e8f0 !important; color: black !important; border: 1px solid #94a3b8; }
+            td { border: 1px solid #cbd5e1; }
+            .qty-input, .disc-input { border: none; background: transparent; font-weight: bold; }
+            .summary-box { display: flex !important; justify-content: flex-end !important; width: 100% !important; margin-top: 30px; }
+            .summary-table { width: 350px !important; border: 1px solid #94a3b8 !important; }
+            .summary-table tr td { border: 1px solid #e2e8f0 !important; background: transparent !important; }
+            .summary-table tr td.amt-col { text-align: right !important; display: table-cell !important; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- LAYER 1: GATEKEEPER LOGIN -->
+<div id="loginScreen">
+    <div class="login-card">
+        <div class="brand-title">PharmaVigour OS</div>
+        <div class="brand-sub">Internal Network Gateway</div>
+        <div id="errorBox" class="error-msg">Invalid Credentials! Access Denied.</div>
+        <div class="form-group">
+            <label>Operator Username</label>
+            <input type="text" id="userInput" placeholder="admin">
+        </div>
+        <div class="form-group">
+            <label>Secure Password</label>
+            <input type="password" id="passInput" placeholder="1234">
+        </div>
+        <button class="btn-login" onclick="validateGatewayLogin()">Authorize & Enter</button>
+    </div>
+</div>
+
+<!-- LAYER 2: MASTER BILLING DASHBOARD -->
+<div id="billingScreen">
+    <div class="container">
+        <div class="header">
+            <h1>PharmaVigour OS</h1>
+            <span class="store-tag">Outlet: Shantipur</span>
+        </div>
+        <div class="meta-grid">
+            <div class="form-group"><label>Patient Name</label><input type="text" id="patientName" value="Rahul Chakraborty"></div>
+            <div class="form-group"><label>Contact Number</label><input type="text" id="patientContact" value="9829972091"></div>
+            <div class="form-group"><label>Doctor Name</label><input type="text" id="docName" value="Dr. P. Maitra"></div>
+            <div class="form-group"><label>Bill Date</label><input type="text" value="16/06/2026" readonly></div>
+        </div>
+        <div class="search-section">
+            <input type="text" id="searchBox" class="search-box" placeholder="Type 3 letters to search (e.g. Cilacar, Cipcal)..." autocomplete="off">
+            <div id="suggestions" class="suggestions-box"></div>
+        </div>
+        <div style="overflow-x: auto;">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Product Name</th><th>Rack</th><th>Batch</th><th>Expiry</th><th>Qty</th><th>Rate (₹)</th><th>Disc %</th><th>GST %</th><th>Amount (₹)</th><th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="billingBody">
+                    <tr class="empty-row" id="emptyRow"><td colspan="10">No products added yet.</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="summary-box">
+            <table class="summary-table">
+                <tr><td>Gross Total:</td><td id="grossTotal" class="amt-col">₹ 0.00</td></tr>
+                <tr><td>Total Discount:</td><td id="totalDisc" class="amt-col">₹ 0.00</td></tr>
+                <tr><td>GST Tax Amount:</td><td id="gstTotal" class="amt-col">₹ 0.00</td></tr>
+                <tr class="total-row"><td><strong>Net Payable:</strong></td><td id="netPayable" class="amt-col">₹ 0.00</td></tr>
+            </table>
+        </div>
+        <div class="btn-container">
+            <button class="btn btn-secondary" onclick="saveDraftToMemory()">Save Draft</button>
+            <button class="btn btn-primary" onclick="window.print()">Submit & Print Bill</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    // System core routing logic
+    function validateGatewayLogin() {
+        var u = document.getElementById('userInput').value.trim();
+        var p = document.getElementById('passInput').value.trim();
+        if (u === "admin" && p === "1234") {
+            document.getElementById('loginScreen').style.display = 'none';
+            document.getElementById('billingScreen').style.display = 'block';
+        } else {
+            document.getElementById('errorBox').style.display = 'block';
+        }
+    }
+
+    var systemProducts = [
+        { id: 1, name: "Cilacar 10mg Tablet", rack: "A-04", batch: "CIL9831", expiry: "12/28", rate: 142.50, gst: 12 },
+        { id: 2, name: "Cipcal XT Tablet", rack: "B-12", batch: "CPXT442", expiry: "08/27", rate: 385.00, gst: 12 },
+        { id: 3, name: "D3-HIGH NANO SHOT 5ml", rack: "Fridge-02", batch: "D3NS771", expiry: "03/27", rate: 92.00, gst: 12 }
+    ];
+    var activeCart = [];
+
+    var searchBox = document.getElementById('searchBox');
+    var suggestionsBox = document.getElementById('suggestions');
+    var billingBody = document.getElementById('billingBody');
+    var emptyRow = document.getElementById('emptyRow');
+
+    searchBox.addEventListener('input', function() {
+        var query = this.value.toLowerCase().trim();
+        suggestionsBox.innerHTML = '';
+        if (query.length < 3) { suggestionsBox.style.display = 'none'; return; }
+        var matches = systemProducts.filter(function(p) { return p.name.toLowerCase().indexOf(query) !== -1; });
+        if (matches.length > 0) {
+            matches.forEach(function(product) {
+                var div = document.createElement('div');
+                div.className = 'suggestion-item';
+                div.innerText = product.name + " (Rate: ₹" + product.rate + ")";
+                div.onclick = function() { addProductToCart(product); };
+                suggestionsBox.appendChild(div);
+            });
+            suggestionsBox.style.display = 'block';
+        } else { suggestionsBox.style.display = 'none'; }
+    });
+
+    function addProductToCart(product) {
+        searchBox.value = ''; suggestionsBox.style.display = 'none';
+        var existing = activeCart.find(function(item) { return item.id === product.id; });
+        if (existing) { existing.qty += 1; } else { activeCart.push({...product, qty: 1, discount: 0}); }
+        renderCart();
+    }
+
+    function renderCart() {
+        billingBody.querySelectorAll('tr:not(#emptyRow)').forEach(function(r) { r.remove(); });
+        if (activeCart.length === 0) { emptyRow.style.display = 'table-row'; calculateTotals(); return; }
+        emptyRow.style.display = 'none';
+        activeCart.forEach(function(item, index) {
+            var tr = document.createElement('tr');
+            var subtotal = (item.rate * item.qty) - ((item.rate * item.qty) * (item.discount / 100));
+            tr.innerHTML = '<td><strong>'+item.name+'</strong></td><td>'+item.rack+'</td><td>'+item.batch+'</td><td>'+item.expiry+'</td>'+
+                '<td><input type="number" class="qty-input" value="'+item.qty+'" onchange="activeCart['+index+'].qty=parseInt(this.value);renderCart();"></td>'+
+                '<td>₹'+item.rate.toFixed(2)+'</td>'+
+                '<td><input type="number" class="disc-input" value="'+item.discount+'" onchange="activeCart['+index+'].discount=parseFloat(this.value);renderCart();"></td>'+
+                '<td>'+item.gst+'%</td><td><strong>₹'+subtotal.toFixed(2)+'</strong></td>'+
+                '<td><button class="delete-btn" onclick="activeCart.splice('+index+',1);renderCart();">Remove</button></td>';
+            billingBody.appendChild(tr);
+        });
+        calculateTotals();
+    }
+
+    function calculateTotals() {
+        var gross = 0, disc = 0, gst = 0;
+        activeCart.forEach(function(item) {
+            var lg = item.rate * item.qty; var ld = lg * (item.discount / 100); var tx = lg - ld;
+            gross += lg; disc += ld; gst += tx * (item.gst / 100);
+        });
+        document.getElementById('grossTotal').innerText = '₹ ' + gross.toFixed(2);
+        document.getElementById('totalDisc').innerText = '₹ ' + disc.toFixed(2);
+        document.getElementById('gstTotal').innerText = '₹ ' + gst.toFixed(2);
+        document.getElementById('netPayable').innerText = '₹ ' + (gross - disc + gst).toFixed(2);
+    }
+</script>
+</body>
+</html>
