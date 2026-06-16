@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PharmaVigour OS - Gatekeeper Login</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: Arial, sans-serif; }
+        body { background-color: #0f172a; display: flex; justify-content: center; align-items: center; height: 100vh; padding: 15px; }
+        .login-card { background: #ffffff; padding: 30px; border-radius: 8px; width: 100%; max-width: 400px; box-shadow: 0 10px 25px rgba(0,0,0,0.3); }
+        .brand-title { text-align: center; color: #1e3a8a; font-size: 24px; font-weight: bold; margin-bottom: 5px; }
+        .brand-sub { text-align: center; color: #64748b; font-size: 12px; text-transform: uppercase; margin-bottom: 25px; letter-spacing: 1px; }
+        .form-group { display: flex; flex-direction: column; margin-bottom: 15px; }
+        .form-group label { font-size: 12px; color: #475569; font-weight: bold; margin-bottom: 5px; }
+        .form-group input { padding: 10px; border: 1px solid #cbd5e1; border-radius: 4px; font-size: 14px; outline: none; }
+        .form-group input:focus { border-color: #2563eb; }
+        .error-msg { color: #ef4444; font-size: 12px; margin-bottom: 15px; display: none; text-align: center; font-weight: bold; }
+        .btn-login { background: #2563eb; color: white; border: none; padding: 12px; border-radius: 4px; width: 100%; font-size: 14px; font-weight: bold; cursor: pointer; transition: background 0.2s; }
+        .btn-login:hover { background: #1d4ed8; }
+    </style>
+</head>
+<body>
+
+<div class="login-card">
+    <div class="brand-title">PharmaVigour OS</div>
+    <div class="brand-sub">Internal Network Gateway</div>
+    
+    <div id="errorBox" class="error-msg">Invalid Credentials! Access Denied.</div>
+    
+    <div class="form-group">
+        <label>Operator Username</label>
+        <input type="text" id="userInput" placeholder="Enter username (admin)">
+    </div>
+    
+    <div class="form-group">
+        <label>Secure Password</label>
+        <input type="password" id="passInput" placeholder="Enter password (1234)">
+    </div>
+    
+    <button class="btn-login" onclick="validateGatewayLogin()">Authorize & Enter</button>
+</div>
+
+<script>
+    function validateGatewayLogin() {
+        var u = document.getElementById('userInput').value.trim();
+        var p = document.getElementById('passInput').value.trim();
+        var errorBox = document.getElementById('errorBox');
+
+        // Initial prototype verification gates
+        if (u === "admin" && p === "1234") {
+            errorBox.style.display = "none";
+            alert("Access Granted! Redirecting to Shantipur Outlet Billing System...");
+            window.location.href = "billing.html"; 
+        } else {
+            errorBox.style.display = "block";
+        }
+    }
+</script>
+
+</body>
+</html>
