@@ -1,1 +1,243 @@
+/* ==========================================================================
+   PHARMAVIGOUR OPERATIONS - RESPONSIVE LAYOUT
+   Media queries for Tablet, Mobile, and Large Displays
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   LARGE TABLETS & SMALL DESKTOPS (Max Width: 1024px)
+   -------------------------------------------------------------------------- */
+@media screen and (max-width: 1024px) {
+    /* Container Adjustments */
+    .container {
+        padding-left: var(--spacing-6);
+        padding-right: var(--spacing-6);
+    }
+
+    /* Navigation - Hide Desktop, Show Mobile Toggle */
+    .desktop-nav {
+        display: none;
+    }
+
+    .mobile-toggle {
+        display: flex;
+        margin-left: var(--spacing-4);
+    }
+
+    .nav-actions .btn-outline {
+        display: none; /* Hide secondary button on tablet to save space */
+    }
+
+    /* Grid Adjustments - 3 and 4 columns break to 2 columns */
+    .grid-cols-3,
+    .grid-cols-4 {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+
+    /* Section Padding Adjustments */
+    .py-20 {
+        padding-top: var(--spacing-16);
+        padding-bottom: var(--spacing-16);
+    }
+
+    .py-16 {
+        padding-top: var(--spacing-12);
+        padding-bottom: var(--spacing-12);
+    }
+}
+
+/* --------------------------------------------------------------------------
+   TABLETS & LARGE MOBILE (Max Width: 768px)
+   -------------------------------------------------------------------------- */
+@media screen and (max-width: 768px) {
+    /* Grid Adjustments - All grids break to 1 column */
+    .grid-cols-2,
+    .grid-cols-3,
+    .grid-cols-4 {
+        grid-template-columns: 1fr !important;
+        gap: var(--spacing-6);
+    }
+
+    /* Hero Section */
+    .hero-content {
+        padding-top: var(--spacing-20);
+    }
+
+    .hero-cta-group {
+        flex-direction: column;
+        width: 100%;
+        gap: var(--spacing-4);
+    }
+
+    .hero-cta-group .btn {
+        width: 100%;
+    }
+
+    /* Metrics Section */
+    .metrics-section .grid-cols-4 {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: var(--spacing-8) var(--spacing-4);
+    }
+
+    /* CTA Banner */
+    .glass-banner {
+        padding: var(--spacing-8) var(--spacing-4);
+        margin-left: var(--spacing-4);
+        margin-right: var(--spacing-4);
+    }
+
+    /* Footer Adjustments */
+    .footer-brand {
+        text-align: center;
+        align-items: center;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        gap: var(--spacing-4);
+        text-align: center;
+    }
+    
+    /* Mobile Menu State (Triggered via JS) */
+    .mobile-menu-active {
+        overflow: hidden; /* Prevent body scroll */
+    }
+
+    .mobile-nav-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background: var(--color-white);
+        z-index: calc(var(--z-header) - 1);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity var(--transition-normal), visibility var(--transition-normal);
+    }
+
+    .mobile-menu-active .mobile-nav-overlay {
+        opacity: 1;
+        visibility: visible;
+    }
+    
+    .mobile-nav-overlay .nav-list {
+        flex-direction: column;
+        align-items: center;
+        gap: var(--spacing-6);
+    }
+    
+    .mobile-nav-overlay .nav-link {
+        font-size: 1.5rem;
+        font-weight: 600;
+    }
+
+    /* Hamburger Animation States */
+    .mobile-menu-active .hamburger-line:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+    .mobile-menu-active .hamburger-line:nth-child(2) {
+        opacity: 0;
+    }
+    .mobile-menu-active .hamburger-line:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+}
+
+/* --------------------------------------------------------------------------
+   SMALL MOBILE DEVICES (Max Width: 480px)
+   -------------------------------------------------------------------------- */
+@media screen and (max-width: 480px) {
+    /* Global Typography Resizing */
+    html {
+        font-size: 95%;
+    }
+
+    /* Container Adjustments */
+    .container {
+        padding-left: var(--spacing-4);
+        padding-right: var(--spacing-4);
+    }
+
+    /* Hide primary action in header, rely on mobile menu */
+    .nav-actions .btn-primary {
+        display: none;
+    }
+
+    /* Metrics Section - Stack entirely */
+    .metrics-section .grid-cols-4 {
+        grid-template-columns: 1fr !important;
+        gap: var(--spacing-6);
+    }
+
+    /* Feature Cards */
+    .feature-card {
+        padding: var(--spacing-6);
+    }
+
+    .icon-wrapper {
+        width: 56px;
+        height: 56px;
+        margin-bottom: var(--spacing-4);
+    }
+
+    /* Spacing Overrides */
+    .py-20 {
+        padding-top: var(--spacing-12);
+        padding-bottom: var(--spacing-12);
+    }
+
+    .py-16 {
+        padding-top: var(--spacing-10);
+        padding-bottom: var(--spacing-10);
+    }
+    
+    .mb-16 {
+        margin-bottom: var(--spacing-12);
+    }
+}
+
+/* --------------------------------------------------------------------------
+   LARGE ENTERPRISE DISPLAYS (Min Width: 1440px)
+   -------------------------------------------------------------------------- */
+@media screen and (min-width: 1440px) {
+    /* Scale up base layout slightly for ultra-wide monitors */
+    .container {
+        max-width: 1400px;
+    }
+
+    .hero-content {
+        max-width: 900px;
+    }
+
+    .hero-title {
+        font-size: 4.5rem;
+    }
+    
+    .glass-blob.blob-primary {
+        width: 800px;
+        height: 800px;
+    }
+}
+
+/* --------------------------------------------------------------------------
+   ACCESSIBILITY: PREFERS REDUCED MOTION
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+    
+    .glass-blob {
+        animation: none !important;
+    }
+}
 
