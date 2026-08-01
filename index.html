@@ -1,211 +1,272 @@
 <!DOCTYPE html>
-<html lang="bn">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PharmaVigour OS - Master Core</title>
-    <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: Arial, sans-serif; }
-        
-        /* Login System Layer Style */
-        #loginScreen { background-color: #0f172a; display: flex; justify-content: center; align-items: center; height: 100vh; padding: 15px; }
-        .login-card { background: #ffffff; padding: 30px; border-radius: 8px; width: 100%; max-width: 400px; box-shadow: 0 10px 25px rgba(0,0,0,0.3); }
-        .brand-title { text-align: center; color: #1e3a8a; font-size: 24px; font-weight: bold; margin-bottom: 5px; }
-        .brand-sub { text-align: center; color: #64748b; font-size: 12px; text-transform: uppercase; margin-bottom: 25px; letter-spacing: 1px; }
-        .form-group { display: flex; flex-direction: column; margin-bottom: 15px; }
-        .form-group label { font-size: 12px; color: #475569; font-weight: bold; margin-bottom: 5px; }
-        .form-group input { padding: 10px; border: 1px solid #cbd5e1; border-radius: 4px; font-size: 14px; outline: none; }
-        .error-msg { color: #ef4444; font-size: 12px; margin-bottom: 15px; display: none; text-align: center; font-weight: bold; }
-        .btn-login { background: #2563eb; color: white; border: none; padding: 12px; border-radius: 4px; width: 100%; font-size: 14px; font-weight: bold; cursor: pointer; }
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
+    <!-- Primary Meta Tags -->
+    <title>PharmaVigour Operations | Enterprise Healthcare AI Solutions</title>
+    <meta name="title" content="PharmaVigour Operations | Enterprise Healthcare AI Solutions">
+    <meta name="description" content="Empowering the global pharmaceutical industry with AI-driven operational intelligence, automated compliance, and enterprise-grade SaaS solutions.">
+    <meta name="keywords" content="Pharma SaaS, Healthcare AI, Pharmaceutical Operations, Medical Technology, Enterprise Healthcare Software, PharmaVigour">
+    <meta name="author" content="PharmaVigour Operations">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.pharmavigour.com/">
 
-        /* Billing System Layer Style */
-        #billingScreen { background-color: #f4f6f9; color: #333; padding: 15px; display: none; }
-        .container { max-width: 1200px; margin: 0 auto; background: #ffffff; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); padding: 20px; }
-        .header { border-bottom: 2px solid #eef2f5; padding-bottom: 15px; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center; }
-        .header h1 { font-size: 20px; color: #1e293b; }
-        .store-tag { background-color: #e0f2fe; color: #0369a1; padding: 4px 10px; border-radius: 4px; font-size: 12px; font-weight: bold; }
-        .meta-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 15px; margin-bottom: 20px; background: #f8fafc; padding: 15px; border-radius: 6px; border: 1px solid #e2e8f0; }
-        .search-section { margin-bottom: 20px; position: relative; }
-        .search-box { width: 100%; padding: 12px; border: 2px solid #3b82f6; border-radius: 6px; font-size: 14px; outline: none; }
-        .suggestions-box { position: absolute; top: 100%; left: 0; right: 0; background: white; border: 1px solid #cbd5e1; border-radius: 0 0 6px 6px; max-height: 200px; overflow-y: auto; z-index: 1000; display: none; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
-        .suggestion-item { padding: 10px 15px; cursor: pointer; border-bottom: 1px solid #f1f5f9; font-size: 13px; }
-        .suggestion-item:hover { background-color: #f0fdf4; }
-        table { width: 100%; border-collapse: collapse; font-size: 13px; min-width: 800px; }
-        th { background-color: #0f172a; color: white; padding: 12px 10px; }
-        td { padding: 10px; border-bottom: 1px solid #e2e8f0; }
-        .qty-input, .disc-input { width: 60px; padding: 5px; border: 1px solid #cbd5e1; border-radius: 4px; text-align: center; }
-        .empty-row td { text-align: center; color: #94a3b8; padding: 40px 0; font-style: italic; }
-        .delete-btn { background: #ef4444; color: white; border: none; padding: 4px 8px; border-radius: 4px; cursor: pointer; font-size: 11px; }
-        .summary-box { display: flex; justify-content: flex-end; margin-top: 20px; border-top: 2px solid #eef2f5; padding-top: 15px; }
-        .summary-table { width: 320px; border-collapse: collapse; }
-        .summary-table tr td { padding: 8px 10px; border: none; font-size: 14px; }
-        .summary-table tr td.amt-col { text-align: right; font-weight: bold; width: 120px; }
-        .total-row { font-size: 18px; color: #1e3a8a; background-color: #f1f5f9; }
-        .btn-container { margin-top: 25px; display: flex; gap: 15px; justify-content: flex-end; }
-        .btn { padding: 10px 20px; border: none; border-radius: 4px; font-weight: bold; cursor: pointer; }
-        .btn-primary { background: #2563eb; color: white; }
-        .btn-secondary { background: #64748b; color: white; }
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.pharmavigour.com/">
+    <meta property="og:title" content="PharmaVigour Operations | Enterprise Healthcare AI Solutions">
+    <meta property="og:description" content="Empowering the global pharmaceutical industry with AI-driven operational intelligence and enterprise-grade SaaS solutions.">
+    <meta property="og:image" content="https://www.pharmavigour.com/assets/images/hero/og-image.jpg">
 
-        /* Print Fixed Setup */
-        @media print {
-            #loginScreen { display: none !important; }
-            #billingScreen { display: block !important; background: white; color: black; padding: 0; margin: 0; }
-            .container { box-shadow: none; padding: 0; max-width: 100%; }
-            .search-section, .btn-container, .delete-btn, th:last-child, td:last-child { display: none !important; }
-            .header h1::after { content: " (INVOICE / CASH MEMO)"; font-size: 13px; display: block; color: #000; font-weight: bold; margin-top: 5px; }
-            table { min-width: 100%; }
-            th { background-color: #e2e8f0 !important; color: black !important; border: 1px solid #94a3b8; }
-            td { border: 1px solid #cbd5e1; }
-            .qty-input, .disc-input { border: none; background: transparent; font-weight: bold; }
-            .summary-box { display: flex !important; justify-content: flex-end !important; width: 100% !important; margin-top: 30px; }
-            .summary-table { width: 350px !important; border: 1px solid #94a3b8 !important; }
-            .summary-table tr td { border: 1px solid #e2e8f0 !important; background: transparent !important; }
-            .summary-table tr td.amt-col { text-align: right !important; display: table-cell !important; }
-        }
-    </style>
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://www.pharmavigour.com/">
+    <meta property="twitter:title" content="PharmaVigour Operations | Enterprise Healthcare AI Solutions">
+    <meta property="twitter:description" content="Empowering the global pharmaceutical industry with AI-driven operational intelligence and enterprise-grade SaaS solutions.">
+    <meta property="twitter:image" content="https://www.pharmavigour.com/assets/images/hero/og-image.jpg">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/icons/apple-touch-icon.png">
+
+    <!-- Preconnect to Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Modular CSS -->
+    <link rel="stylesheet" href="assets/css/utilities.css">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/components.css">
+    <link rel="stylesheet" href="assets/css/animations.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
 </head>
-<body>
+<body class="theme-light">
+    
+    <!-- Accessibility Skip Link -->
+    <a href="#main-content" class="skip-link sr-only">Skip to main content</a>
 
-<!-- LAYER 1: GATEKEEPER LOGIN -->
-<div id="loginScreen">
-    <div class="login-card">
-        <div class="brand-title">PharmaVigour OS</div>
-        <div class="brand-sub">Internal Network Gateway</div>
-        <div id="errorBox" class="error-msg">Invalid Credentials! Access Denied.</div>
-        <div class="form-group">
-            <label>Operator Username</label>
-            <input type="text" id="userInput" placeholder="admin">
-        </div>
-        <div class="form-group">
-            <label>Secure Password</label>
-            <input type="password" id="passInput" placeholder="1234">
-        </div>
-        <button class="btn-login" onclick="validateGatewayLogin()">Authorize & Enter</button>
+    <!-- Application Wrapper -->
+    <div id="app-root" class="app-layout">
+        
+        <!-- Header & Navigation -->
+        <header id="site-header" class="glass-header component-navbar">
+            <div class="container navbar-container flex-between align-center">
+                
+                <!-- Logo -->
+                <a href="index.html" class="brand-logo" aria-label="PharmaVigour Operations Home">
+                    <!-- Assuming SVG logo will be placed here; using text fallback for now -->
+                    <span class="logo-text text-primary font-poppins weight-bold">Pharma<span class="text-secondary">Vigour</span></span>
+                </a>
+
+                <!-- Desktop Navigation -->
+                <nav class="desktop-nav" aria-label="Main Navigation">
+                    <ul class="nav-list flex-row">
+                        <li class="nav-item"><a href="solutions.html" class="nav-link font-inter weight-medium text-dark">Solutions</a></li>
+                        <li class="nav-item"><a href="industries.html" class="nav-link font-inter weight-medium text-dark">Industries</a></li>
+                        <li class="nav-item"><a href="about.html" class="nav-link font-inter weight-medium text-dark">About Us</a></li>
+                        <li class="nav-item"><a href="investors.html" class="nav-link font-inter weight-medium text-dark">Investors</a></li>
+                    </ul>
+                </nav>
+
+                <!-- Action Buttons -->
+                <div class="nav-actions flex-row align-center">
+                    <a href="contact.html" class="btn btn-outline text-primary font-inter weight-semibold">Contact Sales</a>
+                    <a href="#" class="btn btn-primary bg-primary text-white font-inter weight-semibold">Request Demo</a>
+                    
+                    <!-- Mobile Menu Toggle -->
+                    <button id="mobile-menu-toggle" class="mobile-toggle" aria-expanded="false" aria-label="Toggle navigation menu">
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content Area -->
+        <main id="main-content" role="main">
+            
+            <!-- Hero Section -->
+            <section class="hero-section relative full-height flex-center bg-background">
+                <!-- Abstract Glassmorphism Background Elements -->
+                <div class="glass-blob blob-primary absolute"></div>
+                <div class="glass-blob blob-secondary absolute"></div>
+
+                <div class="container relative z-index-10">
+                    <div class="hero-content text-center max-w-800 mx-auto animate-fade-in-up">
+                        <div class="badge badge-glass text-primary font-inter weight-semibold mb-6">
+                            Next-Generation Healthcare AI
+                        </div>
+                        <h1 class="hero-title font-poppins weight-extrabold text-dark mb-6 leading-tight">
+                            Elevating Pharma Operations with <span class="text-secondary">Artificial Intelligence</span>
+                        </h1>
+                        <p class="hero-subtitle font-inter weight-regular text-gray mb-8 text-lg">
+                            PharmaVigour Operations delivers enterprise-grade SaaS infrastructure to streamline clinical trials, automate regulatory compliance, and accelerate pharmaceutical innovation.
+                        </p>
+                        <div class="hero-cta-group flex-row justify-center gap-4">
+                            <a href="solutions.html" class="btn btn-lg btn-primary bg-primary text-white font-inter weight-semibold shadow-glow">Explore Solutions</a>
+                            <a href="investors.html" class="btn btn-lg btn-glass text-dark font-inter weight-semibold">Investor Relations</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Key Features / Solutions Preview -->
+            <section class="features-section py-20 bg-white">
+                <div class="container">
+                    <div class="section-header text-center mb-16">
+                        <h2 class="font-poppins weight-bold text-primary text-3xl mb-4">Enterprise Capabilities</h2>
+                        <p class="font-inter text-gray max-w-600 mx-auto">Scalable architecture designed specifically for the rigorous demands of modern pharmaceutical enterprises.</p>
+                    </div>
+
+                    <div class="grid grid-cols-3 gap-8">
+                        <!-- Feature Card 1 -->
+                        <article class="feature-card glass-card p-8 border-radius-lg hover-elevate">
+                            <div class="icon-wrapper bg-background text-primary mb-6 border-radius-md flex-center">
+                                <!-- Icon Placeholder for AI -->
+                                <span class="icon-ai font-bold text-2xl">⚡</span>
+                            </div>
+                            <h3 class="font-poppins weight-semibold text-dark text-xl mb-3">AI-Driven Analytics</h3>
+                            <p class="font-inter text-gray text-sm line-height-relaxed">
+                                Leverage machine learning algorithms to predict supply chain disruptions and optimize clinical trial data processing in real-time.
+                            </p>
+                        </article>
+
+                        <!-- Feature Card 2 -->
+                        <article class="feature-card glass-card p-8 border-radius-lg hover-elevate">
+                            <div class="icon-wrapper bg-background text-secondary mb-6 border-radius-md flex-center">
+                                <!-- Icon Placeholder for Compliance -->
+                                <span class="icon-shield font-bold text-2xl">🛡️</span>
+                            </div>
+                            <h3 class="font-poppins weight-semibold text-dark text-xl mb-3">Automated Compliance</h3>
+                            <p class="font-inter text-gray text-sm line-height-relaxed">
+                                Maintain continuous adherence to FDA, EMA, and global regulatory standards with automated auditing and reporting tools.
+                            </p>
+                        </article>
+
+                        <!-- Feature Card 3 -->
+                        <article class="feature-card glass-card p-8 border-radius-lg hover-elevate">
+                            <div class="icon-wrapper bg-background text-primary mb-6 border-radius-md flex-center">
+                                <!-- Icon Placeholder for Cloud -->
+                                <span class="icon-cloud font-bold text-2xl">☁️</span>
+                            </div>
+                            <h3 class="font-poppins weight-semibold text-dark text-xl mb-3">Secure Cloud Infrastructure</h3>
+                            <p class="font-inter text-gray text-sm line-height-relaxed">
+                                Built on zero-trust architecture, ensuring patient data privacy and intellectual property protection at all times.
+                            </p>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Metrics / Trust Section -->
+            <section class="metrics-section py-16 bg-primary text-white">
+                <div class="container">
+                    <div class="grid grid-cols-4 gap-6 text-center">
+                        <div class="metric-item">
+                            <h4 class="font-poppins weight-bold text-4xl text-secondary mb-2">99.99%</h4>
+                            <p class="font-inter weight-medium text-sm text-white-alpha">Uptime SLA</p>
+                        </div>
+                        <div class="metric-item">
+                            <h4 class="font-poppins weight-bold text-4xl text-secondary mb-2">50M+</h4>
+                            <p class="font-inter weight-medium text-sm text-white-alpha">Data Points Processed</p>
+                        </div>
+                        <div class="metric-item">
+                            <h4 class="font-poppins weight-bold text-4xl text-secondary mb-2">SOC 2</h4>
+                            <p class="font-inter weight-medium text-sm text-white-alpha">Type II Certified</p>
+                        </div>
+                        <div class="metric-item">
+                            <h4 class="font-poppins weight-bold text-4xl text-secondary mb-2">24/7</h4>
+                            <p class="font-inter weight-medium text-sm text-white-alpha">Enterprise Support</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Call to Action Section -->
+            <section class="cta-section py-20 bg-background relative overflow-hidden">
+                <div class="container relative z-index-10">
+                    <div class="glass-banner bg-white border-radius-xl p-12 text-center shadow-lg mx-auto max-w-900">
+                        <h2 class="font-poppins weight-bold text-dark text-3xl mb-4">Ready to Transform Your Operations?</h2>
+                        <p class="font-inter text-gray mb-8 max-w-600 mx-auto">
+                            Join industry leaders who rely on PharmaVigour to scale securely, innovate faster, and maintain compliance effortlessly.
+                        </p>
+                        <a href="contact.html" class="btn btn-lg btn-primary bg-primary text-white font-inter weight-semibold">Schedule a Consultation</a>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- Footer -->
+        <footer id="site-footer" class="bg-dark text-white pt-16 pb-8 font-inter">
+            <div class="container">
+                <div class="grid grid-cols-4 gap-8 mb-12 border-bottom border-gray-dark pb-12">
+                    
+                    <!-- Footer Column 1: Brand -->
+                    <div class="footer-brand flex-col">
+                        <a href="index.html" class="brand-logo mb-4" aria-label="PharmaVigour Operations Home">
+                            <span class="logo-text text-white font-poppins weight-bold text-2xl">Pharma<span class="text-secondary">Vigour</span></span>
+                        </a>
+                        <p class="text-sm text-gray-light mb-6 line-height-relaxed">
+                            Pioneering the future of pharmaceutical operations through intelligent, secure, and scalable SaaS solutions.
+                        </p>
+                    </div>
+
+                    <!-- Footer Column 2: Solutions -->
+                    <div class="footer-links">
+                        <h5 class="font-poppins weight-semibold text-white mb-4 text-lg">Platform</h5>
+                        <ul class="list-none p-0 flex-col gap-3 text-sm text-gray-light">
+                            <li><a href="solutions.html#ai" class="hover-text-secondary transition">AI Analytics</a></li>
+                            <li><a href="solutions.html#compliance" class="hover-text-secondary transition">Compliance Automation</a></li>
+                            <li><a href="solutions.html#clinical" class="hover-text-secondary transition">Clinical Trial Management</a></li>
+                            <li><a href="solutions.html#supply-chain" class="hover-text-secondary transition">Supply Chain Operations</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Footer Column 3: Company -->
+                    <div class="footer-links">
+                        <h5 class="font-poppins weight-semibold text-white mb-4 text-lg">Company</h5>
+                        <ul class="list-none p-0 flex-col gap-3 text-sm text-gray-light">
+                            <li><a href="about.html" class="hover-text-secondary transition">About Us</a></li>
+                            <li><a href="investors.html" class="hover-text-secondary transition">Investor Relations</a></li>
+                            <li><a href="contact.html" class="hover-text-secondary transition">Contact</a></li>
+                            <li><a href="careers.html" class="hover-text-secondary transition">Careers</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Footer Column 4: Legal -->
+                    <div class="footer-links">
+                        <h5 class="font-poppins weight-semibold text-white mb-4 text-lg">Legal</h5>
+                        <ul class="list-none p-0 flex-col gap-3 text-sm text-gray-light">
+                            <li><a href="privacy-policy.html" class="hover-text-secondary transition">Privacy Policy</a></li>
+                            <li><a href="terms.html" class="hover-text-secondary transition">Terms of Service</a></li>
+                            <li><a href="security.html" class="hover-text-secondary transition">Security Posture</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Footer Bottom -->
+                <div class="footer-bottom flex-between align-center text-xs text-gray-light">
+                    <p>&copy; 2026 PharmaVigour Operations. All rights reserved.</p>
+                    <div class="social-links flex-row gap-4">
+                        <a href="#" aria-label="LinkedIn" class="hover-text-secondary transition">LinkedIn</a>
+                        <a href="#" aria-label="Twitter" class="hover-text-secondary transition">Twitter</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
     </div>
-</div>
 
-<!-- LAYER 2: MASTER BILLING DASHBOARD -->
-<div id="billingScreen">
-    <div class="container">
-        <div class="header">
-            <h1>PharmaVigour OS</h1>
-            <span class="store-tag">Outlet: Shantipur</span>
-        </div>
-        <div class="meta-grid">
-            <div class="form-group"><label>Patient Name</label><input type="text" id="patientName" value="Rahul Chakraborty"></div>
-            <div class="form-group"><label>Contact Number</label><input type="text" id="patientContact" value="9829972091"></div>
-            <div class="form-group"><label>Doctor Name</label><input type="text" id="docName" value="Dr. P. Maitra"></div>
-            <div class="form-group"><label>Bill Date</label><input type="text" value="16/06/2026" readonly></div>
-        </div>
-        <div class="search-section">
-            <input type="text" id="searchBox" class="search-box" placeholder="Type 3 letters to search (e.g. Cilacar, Cipcal)..." autocomplete="off">
-            <div id="suggestions" class="suggestions-box"></div>
-        </div>
-        <div style="overflow-x: auto;">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Product Name</th><th>Rack</th><th>Batch</th><th>Expiry</th><th>Qty</th><th>Rate (₹)</th><th>Disc %</th><th>GST %</th><th>Amount (₹)</th><th>Action</th>
-                    </tr>
-                </thead>
-                <tbody id="billingBody">
-                    <tr class="empty-row" id="emptyRow"><td colspan="10">No products added yet.</td></tr>
-                </tbody>
-            </table>
-        </div>
-        <div class="summary-box">
-            <table class="summary-table">
-                <tr><td>Gross Total:</td><td id="grossTotal" class="amt-col">₹ 0.00</td></tr>
-                <tr><td>Total Discount:</td><td id="totalDisc" class="amt-col">₹ 0.00</td></tr>
-                <tr><td>GST Tax Amount:</td><td id="gstTotal" class="amt-col">₹ 0.00</td></tr>
-                <tr class="total-row"><td><strong>Net Payable:</strong></td><td id="netPayable" class="amt-col">₹ 0.00</td></tr>
-            </table>
-        </div>
-        <div class="btn-container">
-            <button class="btn btn-secondary" onclick="saveDraftToMemory()">Save Draft</button>
-            <button class="btn btn-primary" onclick="window.print()">Submit & Print Bill</button>
-        </div>
-    </div>
-</div>
-
-<script>
-    // System core routing logic
-    function validateGatewayLogin() {
-        var u = document.getElementById('userInput').value.trim();
-        var p = document.getElementById('passInput').value.trim();
-        if (u === "admin" && p === "1234") {
-            document.getElementById('loginScreen').style.display = 'none';
-            document.getElementById('billingScreen').style.display = 'block';
-        } else {
-            document.getElementById('errorBox').style.display = 'block';
-        }
-    }
-
-    var systemProducts = [
-        { id: 1, name: "Cilacar 10mg Tablet", rack: "A-04", batch: "CIL9831", expiry: "12/28", rate: 142.50, gst: 12 },
-        { id: 2, name: "Cipcal XT Tablet", rack: "B-12", batch: "CPXT442", expiry: "08/27", rate: 385.00, gst: 12 },
-        { id: 3, name: "D3-HIGH NANO SHOT 5ml", rack: "Fridge-02", batch: "D3NS771", expiry: "03/27", rate: 92.00, gst: 12 }
-    ];
-    var activeCart = [];
-
-    var searchBox = document.getElementById('searchBox');
-    var suggestionsBox = document.getElementById('suggestions');
-    var billingBody = document.getElementById('billingBody');
-    var emptyRow = document.getElementById('emptyRow');
-
-    searchBox.addEventListener('input', function() {
-        var query = this.value.toLowerCase().trim();
-        suggestionsBox.innerHTML = '';
-        if (query.length < 3) { suggestionsBox.style.display = 'none'; return; }
-        var matches = systemProducts.filter(function(p) { return p.name.toLowerCase().indexOf(query) !== -1; });
-        if (matches.length > 0) {
-            matches.forEach(function(product) {
-                var div = document.createElement('div');
-                div.className = 'suggestion-item';
-                div.innerText = product.name + " (Rate: ₹" + product.rate + ")";
-                div.onclick = function() { addProductToCart(product); };
-                suggestionsBox.appendChild(div);
-            });
-            suggestionsBox.style.display = 'block';
-        } else { suggestionsBox.style.display = 'none'; }
-    });
-
-    function addProductToCart(product) {
-        searchBox.value = ''; suggestionsBox.style.display = 'none';
-        var existing = activeCart.find(function(item) { return item.id === product.id; });
-        if (existing) { existing.qty += 1; } else { activeCart.push({...product, qty: 1, discount: 0}); }
-        renderCart();
-    }
-
-    function renderCart() {
-        billingBody.querySelectorAll('tr:not(#emptyRow)').forEach(function(r) { r.remove(); });
-        if (activeCart.length === 0) { emptyRow.style.display = 'table-row'; calculateTotals(); return; }
-        emptyRow.style.display = 'none';
-        activeCart.forEach(function(item, index) {
-            var tr = document.createElement('tr');
-            var subtotal = (item.rate * item.qty) - ((item.rate * item.qty) * (item.discount / 100));
-            tr.innerHTML = '<td><strong>'+item.name+'</strong></td><td>'+item.rack+'</td><td>'+item.batch+'</td><td>'+item.expiry+'</td>'+
-                '<td><input type="number" class="qty-input" value="'+item.qty+'" onchange="activeCart['+index+'].qty=parseInt(this.value);renderCart();"></td>'+
-                '<td>₹'+item.rate.toFixed(2)+'</td>'+
-                '<td><input type="number" class="disc-input" value="'+item.discount+'" onchange="activeCart['+index+'].discount=parseFloat(this.value);renderCart();"></td>'+
-                '<td>'+item.gst+'%</td><td><strong>₹'+subtotal.toFixed(2)+'</strong></td>'+
-                '<td><button class="delete-btn" onclick="activeCart.splice('+index+',1);renderCart();">Remove</button></td>';
-            billingBody.appendChild(tr);
-        });
-        calculateTotals();
-    }
-
-    function calculateTotals() {
-        var gross = 0, disc = 0, gst = 0;
-        activeCart.forEach(function(item) {
-            var lg = item.rate * item.qty; var ld = lg * (item.discount / 100); var tx = lg - ld;
-            gross += lg; disc += ld; gst += tx * (item.gst / 100);
-        });
-        document.getElementById('grossTotal').innerText = '₹ ' + gross.toFixed(2);
-        document.getElementById('totalDisc').innerText = '₹ ' + disc.toFixed(2);
-        document.getElementById('gstTotal').innerText = '₹ ' + gst.toFixed(2);
-        document.getElementById('netPayable').innerText = '₹ ' + (gross - disc + gst).toFixed(2);
-    }
-</script>
+    <!-- Core JavaScript -->
+    <script src="assets/js/theme.js" defer></script>
+    <script src="assets/js/navbar.js" defer></script>
+    <script src="assets/js/animations.js" defer></script>
+    <script src="assets/js/main.js" defer></script>
 </body>
 </html>
