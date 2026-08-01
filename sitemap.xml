@@ -1,1 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+    
+    <!-- Core Landing Page -->
+    <url>
+        <loc>https://www.pharmavigour.com/</loc>
+        <lastmod>2026-08-01T00:00:00+00:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.00</priority>
+    </url>
+
+    <!-- Product & Solutions -->
+    <url>
+        <loc>https://www.pharmavigour.com/solutions.html</loc>
+        <lastmod>2026-08-01T00:00:00+00:00</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.90</priority>
+    </url>
+
+    <!-- Industry Verticals -->
+    <url>
+        <loc>https://www.pharmavigour.com/industries.html</loc>
+        <lastmod>2026-08-01T00:00:00+00:00</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.90</priority>
+    </url>
+
+    <!-- Corporate Information -->
+    <url>
+        <loc>https://www.pharmavigour.com/about.html</loc>
+        <lastmod>2026-08-01T00:00:00+00:00</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.80</priority>
+    </url>
+
+    <!-- Investor Relations -->
+    <url>
+        <loc>https://www.pharmavigour.com/investors.html</loc>
+        <lastmod>2026-08-01T00:00:00+00:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.80</priority>
+    </url>
+
+    <!-- Lead Generation / Support -->
+    <url>
+        <loc>https://www.pharmavigour.com/contact.html</loc>
+        <lastmod>2026-08-01T00:00:00+00:00</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.80</priority>
+    </url>
+
+    <!-- Legal & Compliance -->
+    <url>
+        <loc>https://www.pharmavigour.com/privacy-policy.html</loc>
+        <lastmod>2026-08-01T00:00:00+00:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.50</priority>
+    </url>
+    <url>
+        <loc>https://www.pharmavigour.com/terms.html</loc>
+        <lastmod>2026-08-01T00:00:00+00:00</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.50</priority>
+    </url>
+
+</urlset>
 
