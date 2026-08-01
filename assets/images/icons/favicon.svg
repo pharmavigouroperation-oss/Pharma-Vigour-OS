@@ -1,1 +1,11 @@
+<svg width="512" height="512" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- Top Diamond / Canopy (Primary Green) -->
+    <path d="M16 2L2 9L16 16L30 9L16 2Z" fill="#0F5C4D"/>
+    
+    <!-- Left Face / Base (Secondary Gold) -->
+    <path d="M2 23L16 30L30 23V9L16 16L2 9V23Z" fill="#D4AF37" fill-opacity="0.9"/>
+    
+    <!-- Right Face / Depth Shadow (Dark Green) -->
+    <path d="M16 16V30L30 23V9L16 16Z" fill="#0A4237" fill-opacity="0.5"/>
+</svg>
 
