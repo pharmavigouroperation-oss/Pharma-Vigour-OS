@@ -1,1 +1,27 @@
+# ==============================================================================
+# PHARMAVIGOUR OPERATIONS - ROBOTS.TXT
+# Enterprise SEO configuration for web crawlers
+# ==============================================================================
+
+User-agent: *
+# Allow crawling of all core pages and rendering assets
+Allow: /
+Allow: /assets/css/
+Allow: /assets/js/
+Allow: /assets/images/
+
+# Prevent indexing of raw HTML component partials
+Disallow: /components/
+
+# Prevent indexing of utility and error pages
+Disallow: /404.html
+
+# Prevent indexing of parameter-based duplicate content
+Disallow: /*?*
+Allow: /*?inquiry=* # Allow contact form parameters if used for tracking
+
+# ==============================================================================
+# XML SITEMAP LOCATION
+# ==============================================================================
+Sitemap: https://www.pharmavigour.com/sitemap.xml
 
