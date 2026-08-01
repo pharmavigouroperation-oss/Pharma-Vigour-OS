@@ -1,94 +1,318 @@
-/* ==========================================================================
-   PHARMAVIGOUR OPERATIONS - RESPONSIVE LAYOUT
-   Media queries for Tablet, Mobile, and Large Displays
-   ========================================================================== */
+/* ==============================================================================
+   PHARMAVIGOUR OPERATIONS - MASTER RESPONSIVE STYLESHEET (responsive.css)
+   Principal Responsive UI Architect Specification
+   Aesthetic Benchmark: Apple, Stripe, Linear, Vercel, Salesforce
+   Target: AI-Powered Pharmacy Retail Operating System & Enterprise ERP Ecosystem
+   ============================================================================== */
 
 /* --------------------------------------------------------------------------
-   LARGE TABLETS & SMALL DESKTOPS (Max Width: 1024px)
+   1. GLOBAL FLUID TYPOGRAPHY & OVERFLOW PREVENTION
    -------------------------------------------------------------------------- */
-@media screen and (max-width: 1024px) {
-    /* Container Adjustments */
+html {
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
+
+body {
+    overflow-x: hidden;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+/* Fluid Heading Scales using Clamp */
+h1 {
+    font-size: clamp(2rem, 4vw + 1rem, var(--font-size-5xl));
+}
+
+h2 {
+    font-size: clamp(1.75rem, 3vw + 0.75rem, var(--font-size-4xl));
+}
+
+h3 {
+    font-size: clamp(1.35rem, 2vw + 0.5rem, var(--font-size-3xl));
+}
+
+/* --------------------------------------------------------------------------
+   2. MOBILE FIRST CONTAINER & SPACING BREAKPOINTS
+   -------------------------------------------------------------------------- */
+.container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: var(--spacing-4);
+    padding-right: var(--spacing-4);
+}
+
+/* 480px: Small Mobile / Large Smartphones */
+@media screen and (min-width: 480px) {
     .container {
         padding-left: var(--spacing-6);
         padding-right: var(--spacing-6);
     }
+}
 
-    /* Navigation - Hide Desktop, Show Mobile Toggle */
+/* 640px: Phablets / Small Tablets */
+@media screen and (min-width: 640px) {
+    .container {
+        max-width: 600px;
+    }
+}
+
+/* 768px: Standard Tablets (iPad Portrait) */
+@media screen and (min-width: 768px) {
+    .container {
+        max-width: 720px;
+        padding-left: var(--spacing-8);
+        padding-right: var(--spacing-8);
+    }
+
+    .grid-cols-2,
+    .grid-cols-3,
+    .grid-cols-4,
+    .grid-cols-5 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* 1024px: Laptops / iPad Pro Landscape */
+@media screen and (min-width: 1024px) {
+    .container {
+        max-width: 960px;
+    }
+
     .desktop-nav {
-        display: none;
+        display: flex !important;
     }
 
     .mobile-toggle {
-        display: flex;
-        margin-left: var(--spacing-4);
+        display: none !important;
     }
 
-    .nav-actions .btn-outline {
-        display: none; /* Hide secondary button on tablet to save space */
+    .grid-cols-3 {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
     }
 
-    /* Grid Adjustments - 3 and 4 columns break to 2 columns */
-    .grid-cols-3,
     .grid-cols-4 {
-        grid-template-columns: repeat(2, 1fr) !important;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
     }
 
-    /* Section Padding Adjustments */
-    .py-20 {
-        padding-top: var(--spacing-16);
-        padding-bottom: var(--spacing-16);
+    .grid-cols-5 {
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+    }
+}
+
+/* 1280px: Enterprise Desktop / Standard Monitors */
+@media screen and (min-width: 1280px) {
+    .container {
+        max-width: var(--container-max-width);
+        padding-left: var(--container-padding-x);
+        padding-right: var(--container-padding-x);
+    }
+}
+
+/* 1440px: Wide Enterprise Displays */
+@media screen and (min-width: 1440px) {
+    :root {
+        --container-max-width: 1360px;
+    }
+}
+
+/* 1536px: Extra Wide Monitors */
+@media screen and (min-width: 1536px) {
+    :root {
+        --container-max-width: 1440px;
+    }
+}
+
+/* 1920px & 2560px: Ultra-Wide & 4K Displays */
+@media screen and (min-width: 1920px) {
+    :root {
+        --container-max-width: 1600px;
+    }
+    
+    body {
+        font-size: 17px;
+    }
+}
+
+@media screen and (min-width: 2560px) {
+    :root {
+        --container-max-width: 1800px;
     }
 
-    .py-16 {
-        padding-top: var(--spacing-12);
-        padding-bottom: var(--spacing-12);
+    body {
+        font-size: 18px;
     }
 }
 
 /* --------------------------------------------------------------------------
-   TABLETS & LARGE MOBILE (Max Width: 768px)
+   3. RESPONSIVE NAVIGATION & NAVBAR OVERRIDES
    -------------------------------------------------------------------------- */
-@media screen and (max-width: 768px) {
-    /* Grid Adjustments - All grids break to 1 column */
-    .grid-cols-2,
-    .grid-cols-3,
-    .grid-cols-4 {
-        grid-template-columns: 1fr !important;
-        gap: var(--spacing-6);
+@media screen and (max-width: 1023px) {
+    .desktop-nav {
+        display: none !important;
     }
 
-    /* Hero Section */
-    .hero-content {
-        padding-top: var(--spacing-20);
+    .mobile-toggle {
+        display: flex !important;
+    }
+
+    .nav-actions .btn {
+        display: none;
+    }
+
+    .nav-actions .btn-primary {
+        display: inline-flex;
+    }
+}
+
+/* Mobile Navigation Overlay / Drawer State */
+@media screen and (max-width: 1023px) {
+    .mobile-nav-overlay {
+        position: fixed;
+        top: var(--navbar-height);
+        left: 0;
+        width: 100%;
+        height: calc(100vh - var(--navbar-height));
+        background-color: var(--color-surface);
+        backdrop-filter: var(--glass-blur);
+        -webkit-backdrop-filter: var(--glass-blur);
+        transform: translateX(100%);
+        transition: transform var(--duration-300) var(--ease-smooth);
+        z-index: var(--z-index-fixed);
+        padding: var(--spacing-8);
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-6);
+        overflow-y: auto;
+    }
+
+    .mobile-nav-overlay.is-open {
+        transform: translateX(0);
+    }
+
+    .mobile-nav-list {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-4);
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .mobile-nav-link {
+        font-family: var(--font-family-display);
+        font-size: var(--font-size-xl);
+        font-weight: var(--font-weight-semibold);
+        color: var(--color-neutral-900);
+        text-decoration: none;
+    }
+}
+
+/* --------------------------------------------------------------------------
+   4. RESPONSIVE HERO & SECTION SPACING
+   -------------------------------------------------------------------------- */
+@media screen and (max-width: 767px) {
+    .hero-section {
+        padding-top: calc(var(--navbar-height) + var(--spacing-8));
+        padding-bottom: var(--spacing-12);
+        text-align: center;
     }
 
     .hero-cta-group {
         flex-direction: column;
         width: 100%;
-        gap: var(--spacing-4);
     }
 
     .hero-cta-group .btn {
         width: 100%;
     }
 
-    /* Metrics Section */
-    .metrics-section .grid-cols-4 {
-        grid-template-columns: repeat(2, 1fr) !important;
-        gap: var(--spacing-8) var(--spacing-4);
+    .section {
+        padding-top: var(--spacing-12);
+        padding-bottom: var(--spacing-12);
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+    .hero-section {
+        padding-top: calc(var(--navbar-height) + var(--spacing-12));
+        padding-bottom: var(--spacing-16);
+    }
+}
+
+/* --------------------------------------------------------------------------
+   5. RESPONSIVE GRID COLLAPSING & PRODUCT CARDS
+   -------------------------------------------------------------------------- */
+@media screen and (max-width: 767px) {
+    .grid-cols-4,
+    .grid-cols-3,
+    .grid-cols-5 {
+        grid-template-columns: 1fr !important;
+        gap: var(--spacing-4);
     }
 
-    /* CTA Banner */
-    .glass-banner {
-        padding: var(--spacing-8) var(--spacing-4);
-        margin-left: var(--spacing-4);
-        margin-right: var(--spacing-4);
+    .grid-cols-2 {
+        grid-template-columns: 1fr !important;
+        gap: var(--spacing-4);
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+    .grid-cols-4,
+    .grid-cols-5 {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: var(--spacing-6);
     }
 
-    /* Footer Adjustments */
+    .grid-cols-3 {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: var(--spacing-6);
+    }
+}
+
+/* --------------------------------------------------------------------------
+   6. RESPONSIVE ERP DASHBOARD MOCKUPS & TABLES
+   -------------------------------------------------------------------------- */
+@media screen and (max-width: 767px) {
+    .erp-table-container {
+        width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .erp-table {
+        min-width: 600px;
+    }
+
+    .erp-sidebar {
+        transform: translateX(-100%);
+        transition: transform var(--duration-300) var(--ease-smooth);
+    }
+
+    .erp-sidebar.is-open {
+        transform: translateX(0);
+    }
+}
+
+/* --------------------------------------------------------------------------
+   7. RESPONSIVE FOOTER
+   -------------------------------------------------------------------------- */
+@media screen and (max-width: 1023px) {
     .footer-brand {
-        text-align: center;
-        align-items: center;
+        grid-column: span 2;
+    }
+
+    .footer-links {
+        grid-column: span 1;
+    }
+}
+
+@media screen and (max-width: 639px) {
+    .footer-brand,
+    .footer-links {
+        grid-column: span 1 !important;
     }
 
     .footer-bottom {
@@ -96,148 +320,56 @@
         gap: var(--spacing-4);
         text-align: center;
     }
-    
-    /* Mobile Menu State (Triggered via JS) */
-    .mobile-menu-active {
-        overflow: hidden; /* Prevent body scroll */
+}
+
+/* --------------------------------------------------------------------------
+   8. TOUCH OPTIMIZATION & SAFE AREA SUPPORT (Notch & Dynamic Island)
+   -------------------------------------------------------------------------- */
+@media (hover: none) and (pointer: coarse) {
+    button,
+    a,
+    input,
+    select,
+    textarea {
+        min-height: 44px;
+        min-width: 44px;
+    }
+
+    .btn {
+        padding-top: 0.875rem;
+        padding-bottom: 0.875rem;
+    }
+}
+
+/* Safe Area Insets for iOS Devices with Notches */
+@supports (padding: max(0px)) {
+    .component-navbar {
+        padding-left: max(var(--container-padding-x), env(safe-area-inset-left));
+        padding-right: max(var(--container-padding-x), env(safe-area-inset-right));
+    }
+
+    #site-footer {
+        padding-bottom: max(var(--spacing-8), env(safe-area-inset-bottom));
+        padding-left: max(var(--container-padding-x), env(safe-area-inset-left));
+        padding-right: max(var(--container-padding-x), env(safe-area-inset-right));
+    }
+}
+
+/* --------------------------------------------------------------------------
+   9. LANDSCAPE MOBILE SUPPORT
+   -------------------------------------------------------------------------- */
+@media screen and (max-height: 500px) and (orientation: landscape) {
+    .component-navbar {
+        height: 60px;
+    }
+
+    .hero-section {
+        padding-top: 80px;
+        padding-bottom: 60px;
     }
 
     .mobile-nav-overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100vh;
-        background: var(--color-white);
-        z-index: calc(var(--z-header) - 1);
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        opacity: 0;
-        visibility: hidden;
-        transition: opacity var(--transition-normal), visibility var(--transition-normal);
-    }
-
-    .mobile-menu-active .mobile-nav-overlay {
-        opacity: 1;
-        visibility: visible;
-    }
-    
-    .mobile-nav-overlay .nav-list {
-        flex-direction: column;
-        align-items: center;
-        gap: var(--spacing-6);
-    }
-    
-    .mobile-nav-overlay .nav-link {
-        font-size: 1.5rem;
-        font-weight: 600;
-    }
-
-    /* Hamburger Animation States */
-    .mobile-menu-active .hamburger-line:nth-child(1) {
-        transform: translateY(8px) rotate(45deg);
-    }
-    .mobile-menu-active .hamburger-line:nth-child(2) {
-        opacity: 0;
-    }
-    .mobile-menu-active .hamburger-line:nth-child(3) {
-        transform: translateY(-8px) rotate(-45deg);
+        top: 60px;
+        height: calc(100vh - 60px);
     }
 }
-
-/* --------------------------------------------------------------------------
-   SMALL MOBILE DEVICES (Max Width: 480px)
-   -------------------------------------------------------------------------- */
-@media screen and (max-width: 480px) {
-    /* Global Typography Resizing */
-    html {
-        font-size: 95%;
-    }
-
-    /* Container Adjustments */
-    .container {
-        padding-left: var(--spacing-4);
-        padding-right: var(--spacing-4);
-    }
-
-    /* Hide primary action in header, rely on mobile menu */
-    .nav-actions .btn-primary {
-        display: none;
-    }
-
-    /* Metrics Section - Stack entirely */
-    .metrics-section .grid-cols-4 {
-        grid-template-columns: 1fr !important;
-        gap: var(--spacing-6);
-    }
-
-    /* Feature Cards */
-    .feature-card {
-        padding: var(--spacing-6);
-    }
-
-    .icon-wrapper {
-        width: 56px;
-        height: 56px;
-        margin-bottom: var(--spacing-4);
-    }
-
-    /* Spacing Overrides */
-    .py-20 {
-        padding-top: var(--spacing-12);
-        padding-bottom: var(--spacing-12);
-    }
-
-    .py-16 {
-        padding-top: var(--spacing-10);
-        padding-bottom: var(--spacing-10);
-    }
-    
-    .mb-16 {
-        margin-bottom: var(--spacing-12);
-    }
-}
-
-/* --------------------------------------------------------------------------
-   LARGE ENTERPRISE DISPLAYS (Min Width: 1440px)
-   -------------------------------------------------------------------------- */
-@media screen and (min-width: 1440px) {
-    /* Scale up base layout slightly for ultra-wide monitors */
-    .container {
-        max-width: 1400px;
-    }
-
-    .hero-content {
-        max-width: 900px;
-    }
-
-    .hero-title {
-        font-size: 4.5rem;
-    }
-    
-    .glass-blob.blob-primary {
-        width: 800px;
-        height: 800px;
-    }
-}
-
-/* --------------------------------------------------------------------------
-   ACCESSIBILITY: PREFERS REDUCED MOTION
-   -------------------------------------------------------------------------- */
-@media (prefers-reduced-motion: reduce) {
-    *,
-    *::before,
-    *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-        scroll-behavior: auto !important;
-    }
-    
-    .glass-blob {
-        animation: none !important;
-    }
-}
-
