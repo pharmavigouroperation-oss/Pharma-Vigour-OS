@@ -1,1 +1,192 @@
+/* ==========================================================================
+   PHARMAVIGOUR OPERATIONS - UTILITIES
+   Single-purpose helper classes for layout, typography, spacing, and colors.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. LAYOUT & CONTAINERS
+   -------------------------------------------------------------------------- */
+.container {
+    width: 100%;
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: var(--spacing-8);
+    padding-right: var(--spacing-8);
+}
+
+.full-height {
+    min-height: 100vh;
+}
+
+.max-w-600 { max-width: 600px; }
+.max-w-800 { max-width: 800px; }
+.max-w-900 { max-width: 900px; }
+
+.mx-auto {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.overflow-hidden {
+    overflow: hidden;
+}
+
+/* --------------------------------------------------------------------------
+   2. FLEXBOX
+   -------------------------------------------------------------------------- */
+.flex-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.flex-col {
+    display: flex;
+    flex-direction: column;
+}
+
+.flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.flex-between {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.align-center { align-items: center; }
+.justify-center { justify-content: center; }
+
+.gap-3 { gap: var(--spacing-3); }
+.gap-4 { gap: var(--spacing-4); }
+.gap-6 { gap: var(--spacing-6); }
+.gap-8 { gap: var(--spacing-8); }
+
+/* --------------------------------------------------------------------------
+   3. GRID
+   -------------------------------------------------------------------------- */
+.grid {
+    display: grid;
+}
+
+.grid-cols-2 { grid-template-columns: repeat(2, 1fr); }
+.grid-cols-3 { grid-template-columns: repeat(3, 1fr); }
+.grid-cols-4 { grid-template-columns: repeat(4, 1fr); }
+
+/* --------------------------------------------------------------------------
+   4. SPACING (MARGIN & PADDING)
+   -------------------------------------------------------------------------- */
+/* Padding */
+.p-0 { padding: 0; }
+.p-8 { padding: var(--spacing-8); }
+.p-12 { padding: var(--spacing-12); }
+
+.py-16 { padding-top: var(--spacing-16); padding-bottom: var(--spacing-16); }
+.py-20 { padding-top: var(--spacing-20); padding-bottom: var(--spacing-20); }
+
+.pt-16 { padding-top: var(--spacing-16); }
+.pb-8 { padding-bottom: var(--spacing-8); }
+.pb-12 { padding-bottom: var(--spacing-12); }
+
+/* Margin */
+.m-0 { margin: 0; }
+
+.mb-2 { margin-bottom: var(--spacing-2); }
+.mb-3 { margin-bottom: var(--spacing-3); }
+.mb-4 { margin-bottom: var(--spacing-4); }
+.mb-6 { margin-bottom: var(--spacing-6); }
+.mb-8 { margin-bottom: var(--spacing-8); }
+.mb-12 { margin-bottom: var(--spacing-12); }
+.mb-16 { margin-bottom: var(--spacing-16); }
+
+/* --------------------------------------------------------------------------
+   5. TYPOGRAPHY
+   -------------------------------------------------------------------------- */
+/* Font Families */
+.font-poppins { font-family: var(--font-primary); }
+.font-inter { font-family: var(--font-secondary); }
+
+/* Font Weights */
+.weight-regular { font-weight: 400; }
+.weight-medium { font-weight: 500; }
+.weight-semibold { font-weight: 600; }
+.weight-bold { font-weight: 700; }
+.weight-extrabold { font-weight: 800; }
+
+/* Font Sizes */
+.text-xs { font-size: 0.75rem; }
+.text-sm { font-size: 0.875rem; }
+.text-base { font-size: 1rem; }
+.text-lg { font-size: 1.125rem; }
+.text-xl { font-size: 1.25rem; }
+.text-2xl { font-size: 1.5rem; }
+.text-3xl { font-size: 1.875rem; }
+.text-4xl { font-size: 2.25rem; }
+
+/* Line Heights */
+.leading-tight { line-height: 1.1; }
+.line-height-relaxed { line-height: 1.625; }
+
+/* Alignment */
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+/* --------------------------------------------------------------------------
+   6. COLORS & BACKGROUNDS
+   -------------------------------------------------------------------------- */
+/* Text Colors */
+.text-primary { color: var(--color-primary); }
+.text-secondary { color: var(--color-secondary); }
+.text-dark { color: var(--color-dark); }
+.text-white { color: var(--color-white); }
+.text-gray { color: var(--color-gray-600); }
+.text-gray-light { color: var(--color-gray-400); }
+.text-white-alpha { color: rgba(255, 255, 255, 0.8); }
+
+.hover-text-secondary:hover { color: var(--color-secondary); }
+
+/* Background Colors */
+.bg-primary { background-color: var(--color-primary); }
+.bg-secondary { background-color: var(--color-secondary); }
+.bg-white { background-color: var(--color-white); }
+.bg-dark { background-color: var(--color-dark); }
+.bg-background { background-color: var(--color-background); }
+
+/* --------------------------------------------------------------------------
+   7. BORDERS & RADII
+   -------------------------------------------------------------------------- */
+.border-radius-sm { border-radius: var(--radius-sm); }
+.border-radius-md { border-radius: var(--radius-md); }
+.border-radius-lg { border-radius: var(--radius-lg); }
+.border-radius-xl { border-radius: var(--radius-xl); }
+.border-radius-pill { border-radius: var(--radius-pill); }
+
+.border-bottom { border-bottom: 1px solid; }
+.border-gray-dark { border-color: var(--color-gray-800); }
+
+/* --------------------------------------------------------------------------
+   8. POSITIONING & Z-INDEX
+   -------------------------------------------------------------------------- */
+.relative { position: relative; }
+.absolute { position: absolute; }
+
+.z-index-10 { z-index: var(--z-elevated); }
+
+/* --------------------------------------------------------------------------
+   9. MISCELLANEOUS
+   -------------------------------------------------------------------------- */
+.shadow-lg { box-shadow: var(--shadow-lg); }
+.shadow-glow { box-shadow: var(--shadow-glow); }
+
+.transition { transition: all var(--transition-normal); }
+
+.list-none {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
 
