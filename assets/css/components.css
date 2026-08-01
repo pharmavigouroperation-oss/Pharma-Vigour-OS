@@ -1,1 +1,293 @@
+/* ==========================================================================
+   PHARMAVIGOUR OPERATIONS - COMPONENTS
+   Modular, reusable UI elements independent of layout.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. BUTTONS
+   -------------------------------------------------------------------------- */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-3) var(--spacing-6);
+    border-radius: var(--radius-md);
+    font-family: var(--font-secondary);
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.5;
+    text-align: center;
+    cursor: pointer;
+    transition: all var(--transition-normal);
+    text-decoration: none;
+    border: 2px solid transparent;
+    user-select: none;
+}
+
+.btn:active {
+    transform: translateY(1px);
+}
+
+.btn-lg {
+    padding: var(--spacing-4) var(--spacing-8);
+    font-size: 1.125rem;
+    border-radius: var(--radius-lg);
+}
+
+.btn-primary {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    border-color: var(--color-primary);
+}
+
+.btn-primary:hover,
+.btn-primary:focus-visible {
+    background-color: var(--color-primary-dark);
+    border-color: var(--color-primary-dark);
+    box-shadow: 0 4px 12px rgba(15, 92, 77, 0.2);
+}
+
+.btn-outline {
+    background-color: transparent;
+    color: var(--color-primary);
+    border-color: var(--color-primary);
+}
+
+.btn-outline:hover,
+.btn-outline:focus-visible {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+}
+
+.btn-glass {
+    background: var(--glass-bg-light);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--glass-border);
+    color: var(--color-dark);
+    box-shadow: var(--shadow-sm);
+}
+
+.btn-glass:hover,
+.btn-glass:focus-visible {
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: var(--shadow-md);
+}
+
+/* --------------------------------------------------------------------------
+   2. GLASSMORPHISM CARDS & CONTAINERS
+   -------------------------------------------------------------------------- */
+.glass-card {
+    background: var(--glass-bg-light);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
+    transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+.hover-elevate:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.15);
+}
+
+.glass-banner {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--color-white);
+}
+
+/* --------------------------------------------------------------------------
+   3. NAVIGATION (HEADER)
+   -------------------------------------------------------------------------- */
+.component-navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: var(--z-header);
+    padding: var(--spacing-4) 0;
+    transition: all var(--transition-normal);
+}
+
+.glass-header {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: var(--shadow-sm);
+}
+
+.nav-list {
+    display: flex;
+    gap: var(--spacing-8);
+}
+
+.nav-link {
+    position: relative;
+    padding: var(--spacing-2) 0;
+    color: var(--color-gray-700);
+    transition: color var(--transition-fast);
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--color-secondary);
+    transition: width var(--transition-normal);
+}
+
+.nav-link:hover,
+.nav-link:focus-visible {
+    color: var(--color-primary);
+}
+
+.nav-link:hover::after,
+.nav-link:focus-visible::after {
+    width: 100%;
+}
+
+/* Mobile Toggle (Hamburger) */
+.mobile-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 32px;
+    height: 24px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: calc(var(--z-header) + 1);
+}
+
+.hamburger-line {
+    width: 100%;
+    height: 2px;
+    background-color: var(--color-dark);
+    transition: all var(--transition-fast);
+    border-radius: var(--radius-pill);
+}
+
+/* --------------------------------------------------------------------------
+   4. BADGES
+   -------------------------------------------------------------------------- */
+.badge {
+    display: inline-flex;
+    align-items: center;
+    padding: var(--spacing-2) var(--spacing-4);
+    border-radius: var(--radius-pill);
+    font-size: 0.875rem;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+.badge-glass {
+    background: rgba(15, 92, 77, 0.1);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(15, 92, 77, 0.2);
+}
+
+/* --------------------------------------------------------------------------
+   5. ABSTRACT BACKGROUND ELEMENTS (BLOBS)
+   -------------------------------------------------------------------------- */
+.glass-blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    z-index: var(--z-negative);
+    opacity: 0.6;
+    animation: float 20s infinite alternate ease-in-out;
+}
+
+.blob-primary {
+    top: -10%;
+    right: -5%;
+    width: 50vw;
+    height: 50vw;
+    max-width: 600px;
+    max-height: 600px;
+    background: linear-gradient(135deg, var(--color-primary-light), rgba(15, 92, 77, 0.2));
+}
+
+.blob-secondary {
+    bottom: -20%;
+    left: -10%;
+    width: 40vw;
+    height: 40vw;
+    max-width: 500px;
+    max-height: 500px;
+    background: linear-gradient(135deg, var(--color-secondary), rgba(212, 175, 55, 0.1));
+    animation-delay: -5s;
+}
+
+/* --------------------------------------------------------------------------
+   6. ICONS & WRAPPERS
+   -------------------------------------------------------------------------- */
+.icon-wrapper {
+    width: 64px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform var(--transition-normal), background-color var(--transition-normal);
+}
+
+.feature-card:hover .icon-wrapper {
+    transform: scale(1.1);
+    background-color: var(--color-primary);
+    color: var(--color-white);
+}
+
+/* --------------------------------------------------------------------------
+   7. FORM ELEMENTS (FOR FUTURE USE / CONTACT / NEWSLETTER)
+   -------------------------------------------------------------------------- */
+.form-group {
+    margin-bottom: var(--spacing-4);
+    display: flex;
+    flex-direction: column;
+}
+
+.form-label {
+    margin-bottom: var(--spacing-2);
+    font-family: var(--font-secondary);
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-gray-700);
+}
+
+.form-control {
+    width: 100%;
+    padding: var(--spacing-3) var(--spacing-4);
+    font-family: var(--font-secondary);
+    font-size: 1rem;
+    color: var(--color-text);
+    background-color: var(--color-white);
+    border: 1px solid var(--color-gray-300);
+    border-radius: var(--radius-md);
+    transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(15, 92, 77, 0.1);
+}
+
+.input-glass {
+    background-color: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.input-glass:focus {
+    background-color: rgba(255, 255, 255, 0.9);
+}
 
