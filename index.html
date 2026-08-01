@@ -94,12 +94,12 @@
         <main id="main-content" role="main">
             
             <!-- SECTION 1: The Hero (Above the Fold) -->
-            <section class="hero-section relative full-height flex-center bg-background overflow-hidden">
+            <section class="hero-section relative flex-center bg-background overflow-hidden" style="padding-top: 160px; padding-bottom: 80px;">
                 <!-- Abstract Glassmorphism Background Elements -->
                 <div class="glass-blob blob-primary absolute" style="top: 5%; right: -10%; width: 50vw; height: 50vw; opacity: 0.6;"></div>
                 <div class="glass-blob blob-secondary absolute" style="bottom: 0%; left: -10%; width: 40vw; height: 40vw; opacity: 0.5;"></div>
 
-                <div class="container relative z-index-10 mt-16 text-center max-w-900 mx-auto">
+                <div class="container relative z-index-10 text-center max-w-900 mx-auto">
                     <div class="animate-fade-in-up">
                         <div class="badge badge-glass text-primary font-inter weight-semibold mb-6 shadow-sm">
                             AI-Powered Pharmacy Retail Operating System
@@ -111,10 +111,49 @@
                         <p class="hero-subtitle font-inter weight-regular text-gray mb-10 text-lg line-height-relaxed max-w-800 mx-auto">
                             PharmaVigour Operations is an AI-powered Pharmacy Retail Operating System designed to help pharmacy businesses automate operations, optimize inventory, and scale with confidence.
                         </p>
-                        <div class="hero-cta-group flex-row justify-center gap-4">
+                        <div class="hero-cta-group flex-row justify-center gap-4 mb-12">
                             <a href="contact.html" class="btn btn-lg btn-primary bg-primary text-white font-inter weight-semibold shadow-glow hover-elevate">Request Enterprise Demo</a>
                             <a href="investors.html" class="btn btn-lg btn-glass text-dark font-inter weight-semibold hover-elevate">View Investor Relations</a>
                         </div>
+                        
+                        <!-- 1. LIVE PRODUCT PREVIEW (ERP Dashboard Simulation) -->
+                        <div class="glass-card border-radius-xl p-6 shadow-lg bg-white border-gray-200 text-left animate-on-scroll animate-fade-in-up delay-200 max-w-800 mx-auto">
+                            <div class="flex-between align-center border-bottom border-gray-200 pb-4 mb-4">
+                                <div class="flex-row align-center gap-3">
+                                    <div class="flex-row gap-2">
+                                        <div class="w-3 h-3 border-radius-pill" style="background-color: #EF4444;"></div>
+                                        <div class="w-3 h-3 border-radius-pill" style="background-color: #F59E0B;"></div>
+                                        <div class="w-3 h-3 border-radius-pill" style="background-color: #10B981;"></div>
+                                    </div>
+                                    <span class="font-poppins weight-semibold text-dark text-sm">PharmaVigour ERP — Live Dashboard Preview</span>
+                                </div>
+                                <span class="badge bg-background text-primary font-inter text-xs weight-semibold">Multi-Store Active</span>
+                            </div>
+                            
+                            <div class="grid grid-cols-5 gap-4">
+                                <div class="p-3 bg-gray-50 border-radius-md border border-gray-200">
+                                    <p class="text-xs text-gray m-0 font-inter">Today's Sales</p>
+                                    <h4 class="font-poppins weight-bold text-dark text-lg m-0 mt-1">₹2,48,650</h4>
+                                </div>
+                                <div class="p-3 bg-gray-50 border-radius-md border border-gray-200">
+                                    <p class="text-xs text-gray m-0 font-inter">Stock Confidence</p>
+                                    <h4 class="font-poppins weight-bold text-primary text-lg m-0 mt-1">98.6%</h4>
+                                </div>
+                                <div class="p-3 bg-gray-50 border-radius-md border border-gray-200">
+                                    <p class="text-xs text-gray m-0 font-inter">Pending POs</p>
+                                    <h4 class="font-poppins weight-bold text-dark text-lg m-0 mt-1">12</h4>
+                                </div>
+                                <div class="p-3 bg-gray-50 border-radius-md border border-gray-200">
+                                    <p class="text-xs text-gray m-0 font-inter">Low Stock Alerts</p>
+                                    <h4 class="font-poppins weight-bold text-secondary text-lg m-0 mt-1">34</h4>
+                                </div>
+                                <div class="p-3 bg-gray-50 border-radius-md border border-gray-200">
+                                    <p class="text-xs text-gray m-0 font-inter">Cycle Count Today</p>
+                                    <h4 class="font-poppins weight-bold text-dark text-lg m-0 mt-1">156</h4>
+                                </div>
+                            </div>
+                        </div>
+
                         <p class="text-xs text-gray-400 mt-6 font-inter">Enterprise-Ready Security Architecture • Cloud-Native Platform</p>
                     </div>
                 </div>
@@ -148,7 +187,7 @@
                 </div>
             </section>
 
-            <!-- SECTION 3: Core Operational Solutions (8 Product Pillars) -->
+            <!-- SECTION 3: Core Operational Solutions (8 Product Pillars with Micro-UI Previews) -->
             <section class="features-section py-20 bg-white">
                 <div class="container">
                     <div class="section-header text-center mb-16 animate-on-scroll animate-fade-in-up">
@@ -161,90 +200,123 @@
                     <div class="grid grid-cols-4 gap-6">
                         <!-- Pillar 1: AI Purchase Engine -->
                         <article class="feature-card glass-card p-6 border-radius-lg hover-elevate bg-gray-50 border-gray-200 flex-col animate-on-scroll animate-fade-in-up delay-100">
-                            <div class="icon-wrapper bg-primary text-white mb-4 border-radius-md flex-center" style="width: 48px; height: 48px;">
+                            <div class="icon-wrapper bg-primary text-white mb-4 border-radius-md flex-center" style="width: 44px; height: 44px;">
                                 <span class="font-bold text-lg">🧠</span>
                             </div>
-                            <h3 class="font-poppins weight-semibold text-dark text-lg mb-2">AI Purchase Engine</h3>
-                            <p class="font-inter text-gray text-xs line-height-relaxed m-0">
-                                Automate procurement with intelligent algorithms that analyze sales velocity and seasonal demand.
+                            <h3 class="font-poppins weight-semibold text-dark text-base mb-2">AI Purchase Engine</h3>
+                            <p class="font-inter text-gray text-xs line-height-relaxed mb-4">
+                                Automate procurement with intelligent algorithms that analyze sales velocity.
                             </p>
+                            <!-- 2. Micro-UI Preview -->
+                            <div class="mt-auto p-2 bg-white border border-gray-200 border-radius-sm text-xs font-inter">
+                                <span class="text-primary weight-semibold block">PO #4092 Suggested</span>
+                                <span class="text-gray-400 text-xs">Paracetamol 650mg (QoQ +15%)</span>
+                            </div>
                         </article>
 
                         <!-- Pillar 2: Inventory Intelligence -->
                         <article class="feature-card glass-card p-6 border-radius-lg hover-elevate bg-gray-50 border-gray-200 flex-col animate-on-scroll animate-fade-in-up delay-200">
-                            <div class="icon-wrapper bg-secondary text-dark mb-4 border-radius-md flex-center" style="width: 48px; height: 48px;">
+                            <div class="icon-wrapper bg-secondary text-dark mb-4 border-radius-md flex-center" style="width: 44px; height: 44px;">
                                 <span class="font-bold text-lg">📦</span>
                             </div>
-                            <h3 class="font-poppins weight-semibold text-dark text-lg mb-2">Inventory Intelligence</h3>
-                            <p class="font-inter text-gray text-xs line-height-relaxed m-0">
-                                Eliminate dead stock and prevent stockouts with deep analytics across your retail catalog.
+                            <h3 class="font-poppins weight-semibold text-dark text-base mb-2">Inventory Intelligence</h3>
+                            <p class="font-inter text-gray text-xs line-height-relaxed mb-4">
+                                Eliminate dead stock and prevent stockouts with deep retail catalog analytics.
                             </p>
+                            <div class="mt-auto p-2 bg-white border border-gray-200 border-radius-sm text-xs font-inter">
+                                <span class="text-secondary weight-semibold block">Dead Stock Alert</span>
+                                <span class="text-gray-400 text-xs">3 items flagged for return</span>
+                            </div>
                         </article>
 
                         <!-- Pillar 3: Live Stock Confidence -->
                         <article class="feature-card glass-card p-6 border-radius-lg hover-elevate bg-gray-50 border-gray-200 flex-col animate-on-scroll animate-fade-in-up delay-300">
-                            <div class="icon-wrapper bg-dark text-white mb-4 border-radius-md flex-center" style="width: 48px; height: 48px;">
+                            <div class="icon-wrapper bg-dark text-white mb-4 border-radius-md flex-center" style="width: 44px; height: 44px;">
                                 <span class="font-bold text-lg">📊</span>
                             </div>
-                            <h3 class="font-poppins weight-semibold text-dark text-lg mb-2">Live Stock Confidence</h3>
-                            <p class="font-inter text-gray text-xs line-height-relaxed m-0">
-                                Absolute transparency and real-time visibility over what is on your shelves at any given moment.
+                            <h3 class="font-poppins weight-semibold text-dark text-base mb-2">Live Stock Confidence</h3>
+                            <p class="font-inter text-gray text-xs line-height-relaxed mb-4">
+                                Absolute transparency and real-time visibility over what is on your shelves.
                             </p>
+                            <div class="mt-auto p-2 bg-white border border-gray-200 border-radius-sm text-xs font-inter">
+                                <span class="text-primary weight-semibold block">Confidence Score</span>
+                                <span class="text-gray-400 text-xs">99.1% Accuracy verified</span>
+                            </div>
                         </article>
 
                         <!-- Pillar 4: Smart Cycle Count -->
                         <article class="feature-card glass-card p-6 border-radius-lg hover-elevate bg-gray-50 border-gray-200 flex-col animate-on-scroll animate-fade-in-up delay-400">
-                            <div class="icon-wrapper bg-primary text-white mb-4 border-radius-md flex-center" style="width: 48px; height: 48px;">
+                            <div class="icon-wrapper bg-primary text-white mb-4 border-radius-md flex-center" style="width: 44px; height: 44px;">
                                 <span class="font-bold text-lg">🔄</span>
                             </div>
-                            <h3 class="font-poppins weight-semibold text-dark text-lg mb-2">Smart Cycle Count</h3>
-                            <p class="font-inter text-gray text-xs line-height-relaxed m-0">
-                                Streamline audits and reconcile discrepancies quickly without shutting down store operations.
+                            <h3 class="font-poppins weight-semibold text-dark text-base mb-2">Smart Cycle Count</h3>
+                            <p class="font-inter text-gray text-xs line-height-relaxed mb-4">
+                                Streamline audits and reconcile discrepancies without shutting down operations.
                             </p>
+                            <div class="mt-auto p-2 bg-white border border-gray-200 border-radius-sm text-xs font-inter">
+                                <span class="text-secondary weight-semibold block">Audit Active</span>
+                                <span class="text-gray-400 text-xs">Aisle 4 reconciled</span>
+                            </div>
                         </article>
 
                         <!-- Pillar 5: Multi-Store ERP -->
                         <article class="feature-card glass-card p-6 border-radius-lg hover-elevate bg-gray-50 border-gray-200 flex-col animate-on-scroll animate-fade-in-up delay-100">
-                            <div class="icon-wrapper bg-secondary text-dark mb-4 border-radius-md flex-center" style="width: 48px; height: 48px;">
+                            <div class="icon-wrapper bg-secondary text-dark mb-4 border-radius-md flex-center" style="width: 44px; height: 44px;">
                                 <span class="font-bold text-lg">🏪</span>
                             </div>
-                            <h3 class="font-poppins weight-semibold text-dark text-lg mb-2">Multi-Store ERP</h3>
-                            <p class="font-inter text-gray text-xs line-height-relaxed m-0">
-                                Centralize management across all your retail branches from a single unified dashboard.
+                            <h3 class="font-poppins weight-semibold text-dark text-base mb-2">Multi-Store ERP</h3>
+                            <p class="font-inter text-gray text-xs line-height-relaxed mb-4">
+                                Centralize management across all your retail branches from a single dashboard.
                             </p>
+                            <div class="mt-auto p-2 bg-white border border-gray-200 border-radius-sm text-xs font-inter">
+                                <span class="text-primary weight-semibold block">Connected Branches</span>
+                                <span class="text-gray-400 text-xs">8 Stores synchronized</span>
+                            </div>
                         </article>
 
                         <!-- Pillar 6: Warehouse Management -->
                         <article class="feature-card glass-card p-6 border-radius-lg hover-elevate bg-gray-50 border-gray-200 flex-col animate-on-scroll animate-fade-in-up delay-200">
-                            <div class="icon-wrapper bg-dark text-white mb-4 border-radius-md flex-center" style="width: 48px; height: 48px;">
+                            <div class="icon-wrapper bg-dark text-white mb-4 border-radius-md flex-center" style="width: 44px; height: 44px;">
                                 <span class="font-bold text-lg">🏭</span>
                             </div>
-                            <h3 class="font-poppins weight-semibold text-dark text-lg mb-2">Warehouse Management</h3>
-                            <p class="font-inter text-gray text-xs line-height-relaxed m-0">
+                            <h3 class="font-poppins weight-semibold text-dark text-base mb-2">Warehouse Management</h3>
+                            <p class="font-inter text-gray text-xs line-height-relaxed mb-4">
                                 Optimize bulk storage, internal transfers, and batch tracking with advanced logistics tooling.
                             </p>
+                            <div class="mt-auto p-2 bg-white border border-gray-200 border-radius-sm text-xs font-inter">
+                                <span class="text-secondary weight-semibold block">Batch Tracking</span>
+                                <span class="text-gray-400 text-xs">FIFO compliance active</span>
+                            </div>
                         </article>
 
                         <!-- Pillar 7: SOP Automation -->
                         <article class="feature-card glass-card p-6 border-radius-lg hover-elevate bg-gray-50 border-gray-200 flex-col animate-on-scroll animate-fade-in-up delay-300">
-                            <div class="icon-wrapper bg-primary text-white mb-4 border-radius-md flex-center" style="width: 48px; height: 48px;">
+                            <div class="icon-wrapper bg-primary text-white mb-4 border-radius-md flex-center" style="width: 44px; height: 44px;">
                                 <span class="font-bold text-lg">✅</span>
                             </div>
-                            <h3 class="font-poppins weight-semibold text-dark text-lg mb-2">SOP Automation</h3>
-                            <p class="font-inter text-gray text-xs line-height-relaxed m-0">
-                                Embed standard operating procedures directly into software workflows to ensure operational consistency.
+                            <h3 class="font-poppins weight-semibold text-dark text-base mb-2">SOP Automation</h3>
+                            <p class="font-inter text-gray text-xs line-height-relaxed mb-4">
+                                Embed standard operating procedures directly into software workflows for consistency.
                             </p>
+                            <div class="mt-auto p-2 bg-white border border-gray-200 border-radius-sm text-xs font-inter">
+                                <span class="text-primary weight-semibold block">SOP Enforced</span>
+                                <span class="text-gray-400 text-xs">Staff sign-off verified</span>
+                            </div>
                         </article>
 
                         <!-- Pillar 8: Business Analytics -->
                         <article class="feature-card glass-card p-6 border-radius-lg hover-elevate bg-gray-50 border-gray-200 flex-col animate-on-scroll animate-fade-in-up delay-400">
-                            <div class="icon-wrapper bg-secondary text-dark mb-4 border-radius-md flex-center" style="width: 48px; height: 48px;">
+                            <div class="icon-wrapper bg-secondary text-dark mb-4 border-radius-md flex-center" style="width: 44px; height: 44px;">
                                 <span class="font-bold text-lg">📈</span>
                             </div>
-                            <h3 class="font-poppins weight-semibold text-dark text-lg mb-2">Business Analytics</h3>
-                            <p class="font-inter text-gray text-xs line-height-relaxed m-0">
+                            <h3 class="font-poppins weight-semibold text-dark text-base mb-2">Business Analytics</h3>
+                            <p class="font-inter text-gray text-xs line-height-relaxed mb-4">
                                 Actionable financial insights, margin reports, and growth metrics tailored for pharmacy owners.
                             </p>
+                            <div class="mt-auto p-2 bg-white border border-gray-200 border-radius-sm text-xs font-inter">
+                                <span class="text-secondary weight-semibold block">Margin Growth</span>
+                                <span class="text-gray-400 text-xs">+4.2% MoM net margin</span>
+                            </div>
                         </article>
                     </div>
                 </div>
@@ -281,16 +353,45 @@
                 </div>
             </section>
 
-            <!-- SECTION 5: Investor Opportunity & Vision -->
+            <!-- SECTION 5: Investor Opportunity & Vision (With Roadmap Preview) -->
             <section class="investor-section py-20 bg-dark text-white relative overflow-hidden">
                 <div class="container relative z-index-10">
-                    <div class="max-w-800 mx-auto text-center animate-on-scroll animate-fade-in-up">
-                        <div class="badge bg-secondary text-dark font-inter weight-bold mb-4">Market Opportunity</div>
+                    <div class="max-w-900 mx-auto text-center animate-on-scroll animate-fade-in-up mb-16">
+                        <div class="badge bg-secondary text-dark font-inter weight-bold mb-4">Market Opportunity & Vision</div>
                         <h2 class="font-poppins weight-bold text-white text-3xl mb-6">Building the Future of Pharmacy Retail Tech</h2>
                         <p class="font-inter text-gray-light mb-8 line-height-relaxed text-lg">
                             India's pharmacy retail sector is evolving rapidly. PharmaVigour is building the technology platform that helps pharmacy businesses operate more efficiently, reduce inventory losses, and scale with confidence.
                         </p>
                         <a href="investors.html" class="btn btn-outline border-white text-white hover-text-secondary font-inter weight-semibold">View Investor Relations</a>
+                    </div>
+
+                    <!-- 3. Investor Roadmap Preview Timeline -->
+                    <div class="grid grid-cols-5 gap-4 relative animate-on-scroll animate-fade-in-up delay-200 pt-8 border-top border-gray-dark">
+                        <div class="text-center">
+                            <span class="badge bg-secondary text-dark font-poppins weight-bold mb-2">2026</span>
+                            <h4 class="font-poppins weight-semibold text-white text-base mb-1">Foundation</h4>
+                            <p class="font-inter text-xs text-gray-light m-0">Core ERP & AI Purchase Engine development.</p>
+                        </div>
+                        <div class="text-center">
+                            <span class="badge bg-gray-800 text-gray-300 font-poppins weight-bold mb-2">2027</span>
+                            <h4 class="font-poppins weight-semibold text-white text-base mb-1">Pilot Chains</h4>
+                            <p class="font-inter text-xs text-gray-light m-0">Deployments across elite Indian retail networks.</p>
+                        </div>
+                        <div class="text-center">
+                            <span class="badge bg-gray-800 text-gray-300 font-poppins weight-bold mb-2">2028</span>
+                            <h4 class="font-poppins weight-semibold text-white text-base mb-1">Commercial Launch</h4>
+                            <p class="font-inter text-xs text-gray-light m-0">Full-scale commercial market availability.</p>
+                        </div>
+                        <div class="text-center">
+                            <span class="badge bg-gray-800 text-gray-300 font-poppins weight-bold mb-2">2029</span>
+                            <h4 class="font-poppins weight-semibold text-white text-base mb-1">Warehouse AI</h4>
+                            <p class="font-inter text-xs text-gray-light m-0">Advanced automated logistics & distribution.</p>
+                        </div>
+                        <div class="text-center">
+                            <span class="badge bg-gray-800 text-gray-300 font-poppins weight-bold mb-2">2030</span>
+                            <h4 class="font-poppins weight-semibold text-white text-base mb-1">National Expansion</h4>
+                            <p class="font-inter text-xs text-gray-light m-0">Establishing dominant regional & global footprint.</p>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -349,8 +450,12 @@
                             </svg>
                             <span class="logo-text text-white font-poppins weight-bold text-2xl">Pharma<span class="text-secondary">Vigour</span></span>
                         </a>
-                        <p class="text-sm text-gray-light mb-6 line-height-relaxed max-w-600">
+                        <p class="text-sm text-gray-light mb-4 line-height-relaxed max-w-600">
                             An AI-powered Pharmacy Retail Operating System designed to help pharmacy businesses automate operations and optimize inventory.
+                        </p>
+                        <!-- 5. Footer Brand Statement -->
+                        <p class="text-xs text-secondary font-poppins weight-semibold m-0">
+                            Engineering the Future of Pharmacy Retail.
                         </p>
                     </div>
 
